@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add New Hostel</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+
+<body>
+    <nav class="navbar navbar-light bg-light shadow rounded p-3">
+        <a class="navbar-brand mb-0 h4 text-primary" href="/dashboard/admin">Hostel Management</a>
+        <div class="d-flex align-items-center">
+            <a href="/auth/logout" class="btn btn-danger">Logout</a>
+        </div>
+    </nav>
+    <div class="bg-light">
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
+            <div class="container">
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <!-- Center the nav items using mx-auto -->
+                    <ul class="navbar-nav mx-auto">
+                        <li class="nav-item"><a class="nav-link" href="/dashboard/admin">Dashboard</a></li>
+                        <li class="nav-item"><a class="nav-link" href="/admin/mess-menu">Mess Menu</a></li>
+                        <li class="nav-item"><a class="nav-link" href="/admin/feedbacks">Feedbacks</a></li>
+                        <li class="nav-item"><a class="nav-link" href="/admin/notifications">Notifications</a>
+                        </li>
+                        <li class="nav-item"><a class="nav-link" href="/listings">Hostel Listings</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+        <div class="container mt-4">
+            <h1 class="text-center mb-4">Add New Hostel</h1>
+            <div class="card shadow-sm p-4">
+                <form action="/listings/add" method="POST">
+                    <div class="mb-3">
+                        <input type="text" name="name" class="form-control" placeholder="Hostel Name" required>
+                    </div>
+                    <div class="mb-3">
+                        <input type="text" name="room_type" class="form-control" placeholder="Room Type" required>
+                    </div>
+                    <div class="mb-3">
+                        <input type="text" name="room_occupancy" class="form-control" placeholder="Occupancy" required>
+                    </div>
+                    <div class="mb-3">
+                        <input type="number" name="price" class="form-control" placeholder="Price" required>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">AC Room:</label>
+                        <div class="form-check form-check-inline">
+                            <input type="radio" name="ac_rooms" value="yes" class="form-check-input" required>
+                            <label class="form-check-label">Yes</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input type="radio" name="ac_rooms" value="no" class="form-check-input" required>
+                            <label class="form-check-label">No</label>
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <textarea name="description" class="form-control" placeholder="Description"></textarea>
+                    </div>
+                    <div class="mb-3">
+                        <input type="text" name="images" class="form-control"
+                            placeholder="Image URLs (comma separated)">
+                    </div>
+                    <button type="submit" class="btn btn-primary w-100">Add Hostel</button>
+                </form>
+            </div>
+        </div>
+        <%- include("../../../include/footer.ejs") %>
+            <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>

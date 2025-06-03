@@ -1,0 +1,78 @@
+<% layout('./layouts/boilerplate.ejs') -%>
+
+    <!-- Top Navbar -->
+    <nav class="navbar navbar-light bg-white shadow-sm rounded p-3">
+        <a class="navbar-brand mb-0 h4 text-primary fw-bold" href="/dashboard/student"> Hostel Management</a>
+        <div class="d-flex align-items-center">
+            <a href="/auth/logout" class="btn btn-danger fw-bold">Logout</a>
+        </div>
+    </nav>
+
+    <!-- Black Separator Line -->
+    <hr style="border: 2px solid black; margin: 0;">
+
+    <!-- Main Navigation -->
+    <div class="bg-light">
+        <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm sticky-top">
+            <div class="container">
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
+                    <ul class="navbar-nav">
+                        <li class="nav-item">
+                            <a class="nav-link text-dark fw-semibold px-3" href="/dashboard/student"> Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark fw-semibold px-3" href="/student/mess-menu"> Mess Menu</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark fw-semibold px-3" href="/student/feedback"> Feedback</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark fw-semibold px-3 active" href="/student/notifications">
+                                Notifications</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+        <!-- Feedback Form Section -->
+        <div class="container mt-5">
+            <h1 class="text-center text-primary fw-bold">📢 Submit Your Feedback</h1>
+            <p class="text-center text-muted">Your feedback helps us improve our services. Please share your thoughts!
+            </p>
+
+            <div class="card border-0 shadow-sm p-4 mt-4">
+                <form action="/student/feedback" method="POST" enctype="multipart/form-data">
+                    <div class="mb-3">
+                        <label class="form-label fw-semibold">👤 Name:</label>
+                        <input type="text" name="name" class="form-control rounded-pill" required>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label fw-semibold">📧 Email:</label>
+                        <input type="email" name="email" class="form-control rounded-pill" required>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label fw-semibold">📞 Phone No:</label>
+                        <input type="text" name="phone" class="form-control rounded-pill" required>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label fw-semibold">🏢 Hostel Name:</label>
+                        <input type="text" name="hostel" class="form-control rounded-pill" required>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label fw-semibold">✏ Description:</label>
+                        <textarea name="description" class="form-control rounded" rows="4"
+                            placeholder="Describe your feedback..." required></textarea>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label fw-semibold">📸 Upload Image (Optional):</label>
+                        <input type="file" name="feedbackImage" class="form-control rounded-pill">
+                    </div>
+                    <button type="submit" class="btn btn-success w-100 fw-bold py-2 rounded-pill">🚀 Submit
+                        Feedback</button>
+                </form>
+            </div>
+        </div>

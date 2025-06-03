@@ -1,0 +1,86 @@
+<% layout('layouts/boilerplate') %>
+
+    <nav class="navbar navbar-light bg-light shadow rounded p-3">
+        <a class="navbar-brand mb-0 h4 text-primary" href="/dashboard/admin">Hostel Management</a>
+        <div class="d-flex align-items-center">
+            <span class="me-3 fw-bold text-dark">Welcome, <%= user.name %> (<%= user.role %>)</span>
+            <a href="/auth/logout" class="btn btn-danger">Logout</a>
+        </div>
+    </nav>
+
+    <div class="bg-light">
+        <!-- Main Navigation -->
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
+            <div class="container">
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse text-center" id="navbarNav">
+                    <ul class="navbar-nav mx-auto">
+                        <li class="nav-item"><a class="nav-link" href="/dashboard/admin">Dashboard</a></li>
+                        <li class="nav-item"><a class="nav-link" href="/admin/mess-menu">Mess Menu</a></li>
+                        <li class="nav-item"><a class="nav-link" href="/admin/feedbacks">Feedbacks</a></li>
+                        <li class="nav-item"><a class="nav-link" href="/admin/notifications">Notifications</a></li>
+                        <li class="nav-item"><a class="nav-link" href="/listings">Hostel Listings</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+        <!-- Main Content -->
+        <div class="container mt-5">
+            <h1 class="text-center text-primary">Welcome, Admin</h1>
+
+            <div class="row mt-4">
+                <!-- Mess Menu Card -->
+                <div class="col-md-4">
+                    <div class="card shadow-lg text-center p-4">
+                        <h4 class="text-info">Manage Mess Menu</h4>
+                        <a href="/admin/mess-menu" class="btn btn-primary w-100">Go to Mess Menu</a>
+                    </div>
+                </div>
+
+                <!-- Feedback Card -->
+                <div class="col-md-4">
+                    <div class="card shadow-lg text-center p-4">
+                        <h4 class="text-warning">Student Feedbacks</h4>
+                        <a href="/admin/feedbacks" class="btn btn-warning w-100">View Feedbacks</a>
+                    </div>
+                </div>
+
+                <!-- Notifications Card -->
+                <div class="col-md-4">
+                    <div class="card shadow-lg text-center p-4">
+                        <h4 class="text-danger">Send Notifications</h4>
+                        <a href="/admin/notifications" class="btn btn-danger w-100">Send Now</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Manage Hostels Button -->
+            <div class="mt-4 text-center">
+                <a href="/listings" class="btn btn-success btn-lg">Manage Hostels</a>
+            </div>
+        </div>
+    </div>
+
+    <style>
+        .card {
+            border: none;
+            border-radius: 12px;
+            transition: all 0.3s ease-in-out;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .btn {
+            transition: 0.3s ease-in-out;
+        }
+
+        .btn:hover {
+            opacity: 0.85;
+        }
+    </style>

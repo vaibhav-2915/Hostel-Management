@@ -1,0 +1,65 @@
+<% layout('layouts/boilerplate') %>
+    <!-- Navbar -->
+    <nav class="navbar navbar-light bg-light shadow rounded p-3 d-flex justify-content-between">
+        <span class="navbar-brand mb-0 h4 text-primary">🏠 Hostel Management</span>
+        <div class="d-flex align-items-center">
+            <span class="me-3 fw-bold text-dark">Welcome, <%= user.name %> (<%= user.role %>)</span>
+            <a href="/auth/logout" class="btn btn-danger">Logout</a>
+        </div>
+    </nav>
+    <div class="bg-light">
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
+            <div class="container">
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <!-- Center the nav items using mx-auto -->
+                    <ul class="navbar-nav mx-auto">
+                        <li class="nav-item"><a class="nav-link" href="/dashboard/rector">Dashboard</a></li>
+                        <li class="nav-item"><a class="nav-link" href="/rector/mess-menu">Mess Menu</a></li>
+                        <li class="nav-item"><a class="nav-link" href="/rector/complaints">Complaints</a></li>
+                        <li class="nav-item"><a class="nav-link" href="/rector/notifications">Notifications</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        <div class="container mt-5">
+
+            <!-- Dashboard Content -->
+            <div class="card mt-4 shadow p-4">
+                <h2 class="text-center text-primary">Dashboard</h2>
+                <p class="text-center text-muted">Manage hostel activities based on your role.</p>
+
+                <!-- Admin Section -->
+                <% if (user.role==="admin" ) { %>
+                    <div class="alert alert-info">
+                        <h4>Admin Panel</h4>
+                        <p>As an Admin, you can manage users, assign rooms, and oversee hostel operations.</p>
+                        <a href="/admin/manage-users" class="btn btn-primary">Manage Users</a>
+                        <a href="/admin/hostel-overview" class="btn btn-secondary">Hostel Overview</a>
+                    </div>
+                    <% } %>
+
+                        <!-- Student Section -->
+                        <% if (user.role==="student" ) { %>
+                            <div class="alert alert-success">
+                                <h4>Student Dashboard</h4>
+                                <p>View your room details, hostel facilities, and important announcements.</p>
+                                <a href="/student/room-details" class="btn btn-primary">View Room Details</a>
+                                <a href="/student/notices" class="btn btn-secondary">View Notices</a>
+                            </div>
+                            <% } %>
+
+                                <!-- Rector Section -->
+                                <% if (user.role==="rector" ) { %>
+                                    <div class="alert alert-warning">
+                                        <h4>Rector Panel</h4>
+                                        <p>Monitor student records, manage hostel rules, and oversee maintenance.</p>
+                                        <a href="/rector/student-records" class="btn btn-primary">View Student
+                                            Records</a>
+                                        <a href="/rector/maintenance" class="btn btn-secondary">Manage Maintenance</a>
+                                    </div>
+                                    <% } %>
+            </div>
+        </div>

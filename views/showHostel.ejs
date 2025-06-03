@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hostel Details</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #f8f9fa;
+        }
+
+        .navbar {
+            border-bottom: 2px solid #ddd;
+        }
+
+        .card {
+            border-radius: 10px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <body class="bg-light">
+
+        <!-- 🔹 Top Navbar (Simple) -->
+        <nav class="navbar navbar-light bg-light shadow-sm px-4">
+            <a class="navbar-brand fw-bold text-primary" href="/">Hostel Management</a>
+            <div class="d-flex align-items-center">
+                <a class="btn btn-primary text-white me-2" href="/auth/login">Login</a>
+                <a class="btn btn-outline-primary" href="/auth/register">Sign Up</a>
+            </div>
+        </nav>
+
+        <!-- 🔹 Main Navbar (Dark Theme) -->
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
+            <div class="container">
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
+                    <ul class="navbar-nav">
+                        <<li class="nav-item"><a class="nav-link" href="/">Dashboard</a></li>
+                            <li class="nav-item"><a class="nav-link" href="#features">Features</a></li>
+                            <li class="nav-item"><a class="nav-link" href="/hostelListing">Hostels</a></li>
+                            <li class="nav-item"><a class="nav-link" href="#testimonials">Testimonials</a></li>
+                            <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+        <div class="container mt-5">
+            <div class="card shadow-sm p-4">
+                <h1 class="text-center mb-3 text-primary">
+                    <%= listing.name %>
+                </h1>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item"><strong>Room Type:</strong>
+                        <%= listing.room_type %>
+                    </li>
+                    <li class="list-group-item"><strong>Occupancy:</strong>
+                        <%= listing.room_occupancy %>
+                    </li>
+                    <li class="list-group-item"><strong>AC Room:</strong>
+                        <%= listing.ac_rooms ? 'Yes' : 'No' %>
+                    </li>
+                    <li class="list-group-item"><strong>Price:</strong> ₹<%= listing.price %>
+                    </li>
+                    <li class="list-group-item"><strong>Description:</strong>
+                        <%= listing.description %>
+                    </li>
+                </ul>
+
+                <% if (listing.images && listing.images.length) { %>
+                    <h3 class="mt-4">Images</h3>
+                    <div id="imageCarousel" class="carousel slide" data-bs-ride="carousel">
+                        <div class="carousel-inner">
+                            <% listing.images.forEach((image, index)=> { %>
+                                <div class="carousel-item <%= index === 0 ? 'active' : '' %>">
+                                    <img src="<%= image %>" class="d-block w-100 rounded shadow-sm" alt="Hostel Image">
+                                </div>
+                                <% }); %>
+                        </div>
+                        <button class="carousel-control-prev" type="button" data-bs-target="#imageCarousel"
+                            data-bs-slide="prev">
+                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Previous</span>
+                        </button>
+                        <button class="carousel-control-next" type="button" data-bs-target="#imageCarousel"
+                            data-bs-slide="next">
+                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Next</span>
+                        </button>
+                    </div>
+                    <% } %>
+
+                        <div class="mt-4 text-center">
+                            <a href="/hostelListing" class="btn btn-secondary">Back to Listings</a>
+                        </div>
+            </div>
+        </div>
+
+        <%- include("./include/footer.ejs") %>
+            <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    </body>
+
+</html>

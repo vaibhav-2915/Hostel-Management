@@ -1,0 +1,84 @@
+<% layout('layouts/boilerplate') %>
+
+    <!-- Top Navbar -->
+    <nav class="navbar navbar-light bg-white shadow-sm rounded p-3">
+        <a class="navbar-brand mb-0 h4 text-primary fw-bold" href="/dashboard/student"> Hostel Management</a>
+        <div class="d-flex align-items-center">
+            <span class="me-3 fw-bold text-dark">
+                👤 <%= user.name %>
+            </span>
+            <a href="/auth/logout" class="btn btn-danger btn-sm shadow-sm">Logout</a>
+        </div>
+    </nav>
+
+    <!-- Black Separator Line -->
+    <hr style="border: 2px solid black; margin: 0;">
+
+    <!-- Main Navigation -->
+    <div class="bg-light">
+        <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm sticky-top">
+            <div class="container">
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
+                    <ul class="navbar-nav">
+                        <li class="nav-item">
+                            <a class="nav-link text-dark fw-semibold px-3" href="/dashboard/student"> Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark fw-semibold px-3" href="/student/mess-menu"> Mess Menu</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark fw-semibold px-3" href="/student/feedback"> Feedback</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark fw-semibold px-3 active" href="/student/notifications">
+                                Notifications</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+        <!-- Dashboard Container -->
+        <div class="container mt-5 pb-5">
+            <h1 class="text-center text-dark fw-bold">🎉 Welcome, <%= user.name %>!</h1>
+            <p class="text-center text-muted">Manage your hostel activities from your dashboard.</p>
+
+            <div class="row mt-4">
+                <!-- Student Dashboard -->
+                <% if (user.role==="student" ) { %>
+                    <div class="col-md-4 mb-4">
+                        <div class="card shadow-lg p-4 text-center rounded-lg border-0">
+                            <h4 class="text-success fw-bold">🏠 Student Dashboard</h4>
+                            <p class="mb-3 text-muted">View your room details, hostel facilities, and important
+                                announcements.</p>
+                            <a href="/student/room-details" class="btn btn-primary w-100 mb-2 shadow-sm">🔍 View Room
+                                Details</a>
+                        </div>
+                    </div>
+
+                    <!-- Complaints Card -->
+                    <div class="col-md-4 mb-4">
+                        <div class="card shadow-lg p-4 text-center rounded-lg border-0">
+                            <h4 class="text-danger fw-bold">📢 Complaints</h4>
+                            <p class="mb-3 text-muted">Report any issues or complaints related to hostel facilities.</p>
+                            <a href="/student/complaints" class="btn btn-warning w-100 shadow-sm">⚠️ Submit
+                                Complaint</a>
+                        </div>
+                    </div>
+
+                    <!-- Feedback Card -->
+                    <div class="col-md-4 mb-4">
+                        <div class="card shadow-lg p-4 text-center rounded-lg border-0">
+                            <h4 class="text-info fw-bold">📝 Submit Feedback</h4>
+                            <p class="mb-3 text-muted">Provide feedback on your hostel experience to help us improve.
+                            </p>
+                            <a href="/student/feedback" class="btn btn-success w-100 shadow-sm">✍️ Submit Feedback</a>
+                        </div>
+                    </div>
+                    <% } %>
+            </div>
+        </div>
+    </div>
